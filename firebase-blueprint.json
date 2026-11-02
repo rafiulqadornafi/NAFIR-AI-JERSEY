@@ -1,0 +1,84 @@
+{
+  "entities": {
+    "config": {
+      "title": "Store Config",
+      "description": "Global store configuration settings",
+      "type": "object",
+      "properties": {
+        "bKashNumber": { "type": "string" },
+        "nagadNumber": { "type": "string" },
+        "whatsappNumber": { "type": "string" },
+        "supportEmail": { "type": "string" },
+        "hotlineNumber": { "type": "string" },
+        "hubAddress": { "type": "string" },
+        "bKashQR": { "type": "string" },
+        "nagadQR": { "type": "string" },
+        "webhookUrl": { "type": "string" },
+        "globalDiscountPercent": { "type": "number" },
+        "flashSaleDiscountPercent": { "type": "number" },
+        "viewsCount": { "type": "number" },
+        "showStockProgressGlobal": { "type": "boolean" }
+      },
+      "required": ["bKashNumber", "nagadNumber", "whatsappNumber"]
+    },
+    "jerseys": {
+      "title": "Jerseys",
+      "description": "Store jerseys catalog items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "country": { "type": "string" },
+        "name": { "type": "string" },
+        "priceBDT": { "type": "number" },
+        "originalPriceBDT": { "type": "number" },
+        "priceUSD": { "type": "number" },
+        "image": { "type": "string" },
+        "description": { "type": "string" },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" },
+        "discountPercent": { "type": "number" },
+        "soldCount": { "type": "number" },
+        "stockLeft": { "type": "number" },
+        "showStockProgress": { "type": "boolean" },
+        "badgeColor": { "type": "string" },
+        "accentColor": { "type": "string" },
+        "bgGradient": { "type": "string" }
+      },
+      "required": ["id", "country", "name", "priceBDT"]
+    },
+    "orders": {
+      "title": "Orders",
+      "description": "Customer order records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "jerseyId": { "type": "string" },
+        "jerseyName": { "type": "string" },
+        "size": { "type": "string" },
+        "quantity": { "type": "number" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "transactionId": { "type": "string" },
+        "amount": { "type": "number" },
+        "timestamp": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "customerName", "customerPhone"]
+    }
+  },
+  "firestore": {
+    "/config/{configId}": {
+      "schema": "config",
+      "description": "Store configuration and settings"
+    },
+    "/jerseys/{jerseyId}": {
+      "schema": "jerseys",
+      "description": "Individual jersey catalog documents"
+    },
+    "/orders/{orderId}": {
+      "schema": "orders",
+      "description": "Customer orders records"
+    }
+  }
+}
